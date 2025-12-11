@@ -4,6 +4,8 @@ import { generateToken } from "../lib/utils.js";
 import { sendWelcomeEmail } from "../emails/emailHandler.js";
 import { ENV } from "../lib/env.js";
 import cloudinary from "../lib/cloudinary.js";
+
+
 export const signup=async (req,res) =>{
     const {fullName,email,password}=req.body;
     try{
@@ -86,7 +88,7 @@ export const login = async(req,res)=>{
         });
         
     }catch(error){
-        console.error("Error in login controller", error);
+        console.log("Error in login controller", error);
         res.status(500).json({message:"Internal Server error"});
     }
 };
