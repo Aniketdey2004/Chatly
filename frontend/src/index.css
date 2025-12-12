@@ -28,3 +28,6 @@
   @apply px-4 py-2 inline-block bg-cyan-500/10 rounded-lg text-cyan-400
   hover:text-cyan-500 text-sm transition-colors;
 }
+.auth-badge{
+  @apply px-3 py-1 text-xs font-medium rounded-full bg-cyan-500/20 text-cyan-300;
+}
