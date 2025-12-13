@@ -11,13 +11,13 @@ import NoConversationPlaceholder from '../components/NoConversationPlaceholder';
 export default function ChatPage() {
   const {activeTab, selectedUser}=useChatStore();
   return (
-    <div className='relative w-full max-w-6xl h-[750px]'>
+    <div className='relative w-full max-w-6xl h-[750px] mx-4'>
       <BorderAnimatedContainer>
         {/*Left Section*/}
         <div className='w-80 bg-slate-800/50 backdrop-blur-sm flex flex-col'>
           <ProfileHeader />
           <ActiveTabSwitch/>
-          <div className='flex-1 splace-y-2 overflow-y-auto p-4'>
+          <div className='flex-1 space-y-2 overflow-y-auto p-6'>
               {activeTab==="chats"?<ChatsList/>:<ContactList/>}
           </div>
         </div>
