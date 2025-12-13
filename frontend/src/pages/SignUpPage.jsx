@@ -15,8 +15,7 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className='w-full flex items-center justify-center p-4'>
-       <div className="relative w-full max-w-6xl md:h-[750px] h-[650px]">
+       <div className="relative w-full max-w-6xl md:h-[750px] h-[650px] mx-4">
           <BorderAnimatedContainer>
             <div className='w-full flex flex-col md:flex-row'>
                 {/*FORM COLUMN left side*/}
@@ -84,6 +83,6 @@ export default function SignUpPage() {
             </div>
           </BorderAnimatedContainer>
        </div>
-    </div>
+   
   )
 }
