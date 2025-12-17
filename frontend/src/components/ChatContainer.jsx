@@ -5,15 +5,23 @@ import { useEffect } from 'react';
 import ChatHeader from './ChatHeader';
 import NoChatHistoryPlaceholder from './NoChatHistoryPlaceholder';
 import MessagesLoadingSkeleton from './MessagesLoadingSkeleton';
-
+import MessageInput from './MessageInput';
+import { useRef } from 'react';
 
 export default function ChatContainer() {
   const {messages, selectedUser, getMessagesByUserId, isMessagesLoading}=useChatStore();
   const {authUser}= useAuthStore();
+  const msgRef=useRef(null);
 
   useEffect(()=>{
     getMessagesByUserId(selectedUser._id);
   },[getMessagesByUserId, selectedUser]);
+
+  useEffect(()=>{
+    if(msgRef.current!=null){
+      msgRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  },[messages])
 
   return (
     <div className='h-full flex flex-col'>
@@ -24,7 +32,7 @@ export default function ChatContainer() {
             <div className='max-w-3xl mx-auto space-y-6'>
               {
                 messages.map((message)=>(
-                  <div className={`chat ${message.senderId===authUser._id?"chat-end":"chart-start"}`}>
+                  <div key={message._id} className={`chat ${message.senderId===authUser._id?"chat-end":"chart-start"}`}>
                       <div className={`chat-bubble ${message.senderId===authUser._id?"bg-cyan-600 text-white":"bg-slate-800 text-slate-200"}`}>
                           {message.image && <img src={message.image} alt='Shared' className='rounded-lg h-48 object-cover'/>}
                           {message.text && <p className='mt-2'>{message.text}</p>}
@@ -38,11 +46,13 @@ export default function ChatContainer() {
                   </div>
                 ))
               }
+              <div ref={msgRef}></div>
             </div>
           ) 
           :isMessagesLoading?<MessagesLoadingSkeleton />:<NoChatHistoryPlaceholder name={selectedUser.fullName}/>
         }
       </div>
+      <MessageInput/>
     </div>
   )
 }

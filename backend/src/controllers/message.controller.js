@@ -1,5 +1,6 @@
 import Message from "../models/Message.js";
 import User from "../models/User.js";
+import cloudinary from '../lib/cloudinary.js'
 
 export const getAllContacts= async(req, res)=>{
     try{
@@ -54,7 +55,7 @@ export const sendMessage=async (req,res)=>{
 
         let imageUrl;
         if(image){
-            const uploadResponse=await cloduinary.uploader.upload(image);
+            const uploadResponse=await cloudinary.uploader.upload(image);
             imageUrl=uploadResponse.secure_url;
         }
 
@@ -71,7 +72,7 @@ export const sendMessage=async (req,res)=>{
     }
     catch(error){
         console.log("Error in send message controller",error);
-        res.status(500).json({message:"Internal Server errror"});
+        res.status(500).json({message:"Internal Server error"});
     }
 };
 
