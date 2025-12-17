@@ -15,10 +15,9 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className='w-full flex items-center justify-center p-4'>
-       <div className="relative w-full max-w-6xl md:h-[750px] h-[650px]">
+       <div className="relative w-full max-w-6xl md:h-[750px] h-[650px] mx-4">
           <BorderAnimatedContainer>
-            <div className='w-full flex flex-col md:flex-row'>
+            {/* <div className='w-full flex  md:flex-row'> */}
                 {/*FORM COLUMN left side*/}
                 <div className='md:w-1/2 p-8 flex flex-col justify-center md:border-r border-slate-600/30'>
                         {/*heading text */}
@@ -81,9 +80,9 @@ export default function SignUpPage() {
                       </div>
                     </div>
                 </div>
-            </div>
+            {/* </div> */}
           </BorderAnimatedContainer>
        </div>
-    </div>
+   
   )
 }
