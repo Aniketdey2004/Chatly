@@ -11,7 +11,7 @@ import NoConversationPlaceholder from '../components/NoConversationPlaceholder';
 export default function ChatPage() {
   const {activeTab, selectedUser}=useChatStore();
   return (
-    <div className='relative w-full max-w-6xl h-[750px] mx-4'>
+    <div className='relative w-full max-w-6xl h-[800px] mx-4'>
       <BorderAnimatedContainer>
         {/*Left Section*/}
         <div className='w-80 bg-slate-800/50 backdrop-blur-sm flex flex-col'>
