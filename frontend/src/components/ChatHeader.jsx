@@ -4,8 +4,9 @@ import { XIcon } from 'lucide-react';
 import { useAuthStore } from '../store/useAuthStore';
 
 export default function ChatHeader() {
-    const { selectedUser, setSelectedUser } = useChatStore();
-    const {onlineUsers}=useAuthStore();
+    const selectedUser=useChatStore((state)=>state.selectedUser);
+    const setSelectedUser=useChatStore((state)=>state.setSelectedUser);
+    const onlineUsers=useAuthStore((state)=>state.onlineUsers);
     useEffect(() => {
         const handleEscKey = (event) => {
             if (event.key === "Escape") setSelectedUser(null);

@@ -11,7 +11,8 @@ export default function MessageInput() {
   const [image, setImage] = useState("");
   const fileInputRef = useRef(null);
 
-  const { sendMessage, isSoundEnabled } = useChatStore();
+  const sendMessage=useChatStore((state)=>state.sendMessage);
+  const isSoundEnabled=useChatStore((state)=>state.isSoundEnabled);
 
   const handleSendMessage = (e) => {
     e.preventDefault();

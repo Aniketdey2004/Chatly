@@ -5,8 +5,12 @@ import {useChatStore} from "../store/useChatStore.js";
 import { useAuthStore } from '../store/useAuthStore.js';
 
 export default function ContactList() {
-  const {allContacts, getAllContacts, isUsersLoading, setSelectedUser}= useChatStore();
-  const {onlineUsers}=useAuthStore();
+  const allContacts=useChatStore((state)=>state.allContacts);
+  const getAllContacts=useChatStore((state)=>state.getAllContacts);
+  const isUsersLoading=useChatStore((state)=>state.isUsersLoading);
+  const setSelectedUser=useChatStore((state)=>state.setSelectedUser);
+  const onlineUsers=useAuthStore((state)=>state.onlineUsers);
+  
   useEffect(()=>{
     getAllContacts();
   },[getAllContacts]);

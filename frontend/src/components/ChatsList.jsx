@@ -5,8 +5,11 @@ import UsersLoadingSkeleton from './UsersLoadingSkeleton';
 import { useAuthStore } from '../store/useAuthStore.js';
 
 export default function ChatsList() {
-  const {chats, getMyChatPartners, setSelectedUser, isUsersLoading}=useChatStore();
-  const {onlineUsers}=useAuthStore();
+  const chats=useChatStore((state)=>state.chats);
+  const getMyChatPartners=useChatStore((state)=>state.getMyChatPartners);
+  const setSelectedUser=useChatStore((state)=>state.setSelectedUser);
+  const isUsersLoading=useChatStore((state)=>state.isUsersLoading);
+  const onlineUsers=useAuthStore((state)=>state.onlineUsers);
 
   useEffect(()=>{
     getMyChatPartners();
