@@ -9,13 +9,21 @@ import MessageInput from './MessageInput';
 import { useRef } from 'react';
 
 export default function ChatContainer() {
-  const {messages, selectedUser, getMessagesByUserId, isMessagesLoading}=useChatStore();
-  const {authUser}= useAuthStore();
+  const messages=useChatStore((state)=>state.messages);
+  const selectedUser=useChatStore((state)=>state.selectedUser);
+  const getMessagesByUserId=useChatStore((state)=>state.getMessagesByUserId);
+  const isMessagesLoading=useChatStore((state)=>state.isMessagesLoading);
+  const subscribeToMessages=useChatStore((state)=>state.subscribeToMessages);
+  const unsubscribeFromMessages=useChatStore((state)=>state.unsubscribeFromMessages);
+
+  const authUser=useAuthStore((state)=>state.authUser);
   const msgRef=useRef(null);
 
   useEffect(()=>{
     getMessagesByUserId(selectedUser._id);
-  },[getMessagesByUserId, selectedUser]);
+    subscribeToMessages();
+    return ()=>unsubscribeFromMessages();
+  },[getMessagesByUserId, selectedUser,subscribeToMessages,unsubscribeFromMessages]);
 
   useEffect(()=>{
     if(msgRef.current!=null){

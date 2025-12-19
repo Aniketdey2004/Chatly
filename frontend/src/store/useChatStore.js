@@ -3,6 +3,8 @@ import { axiosInstance } from "../lib/axios";
 import toast from "react-hot-toast";
 import { useAuthStore } from "./useAuthStore";
 
+const notificationSound=new Audio('./sounds/notification.mp3');
+
 export const useChatStore= create((set,get)=>({
     allContacts:[],
     chats:[],
@@ -63,7 +65,7 @@ export const useChatStore= create((set,get)=>({
         }
     },
     sendMessage:async(messageData)=>{
-        const {selectedUser,messages}=get();
+        const {selectedUser}=get();
         const {authUser}=useAuthStore.getState();
         const tempId=`temp-${Date.now()}`;
         const optimisticMessage={
@@ -75,17 +77,49 @@ export const useChatStore= create((set,get)=>({
             createdAt: new Date().toISOString(),
             isOptimistic:true
         };
-        set({messages:[...messages,optimisticMessage]});
+
+        set((state) => ({
+            messages: [...state.messages, optimisticMessage],
+        }));
+        
         try{
             console.log("requesting");
             const res=await axiosInstance.post(`/message/send/${selectedUser._id}`,messageData);
-            set({messages:get().messages.map((msg)=>(
-                msg._id===tempId?res.data:msg
-            ))});
+            set((state) => ({
+                messages: state.messages.map((msg) =>
+                    msg._id === tempId ? res.data : msg
+                ),
+            }));
         }
         catch(error){
             toast.error(error.response.data.message);
-            set({messages:messages});
+            set((state)=>({
+                messages:state.messages.filter((msg)=>msg._id!==tempId)
+            }));
         }
+    },
+    subscribeToMessages:()=>{
+        const {selectedUser, isSoundEnabled}=get();
+        if(!selectedUser) return;
+
+        const socket=useAuthStore.getState().socket;
+
+        socket.on("newMessage",(newMessage)=>{
+            set((state) => ({
+                messages: [...state.messages, newMessage],
+            }));
+
+            if(isSoundEnabled){
+                notificationSound.currentTime=0;
+                notificationSound.play().catch((e)=>console.log("Audio play failed:",e));
+            }
+        });
+    },
+    unsubscribeFromMessages:()=>{
+        const socket=useAuthStore.getState().socket;
+        socket.off("newMessage");
+    },
+    storeCleanUp:()=>{
+        set({activeTab:"chats",selectedUser:null});
     }
 }));

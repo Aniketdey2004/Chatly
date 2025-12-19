@@ -9,7 +9,9 @@ import ChatContainer from '../components/ChatContainer';
 import NoConversationPlaceholder from '../components/NoConversationPlaceholder';
 
 export default function ChatPage() {
-  const {activeTab, selectedUser}=useChatStore();
+  const activeTab=useChatStore((state)=>state.activeTab);
+  const selectedUser=useChatStore((state)=>state.selectedUser);
+
   return (
     <div className='relative w-full max-w-6xl h-[800px] mx-4'>
       <BorderAnimatedContainer>

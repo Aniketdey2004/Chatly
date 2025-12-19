@@ -22,6 +22,9 @@ io.use(socketAuthMiddleware);
 //for storing the online users
 const onlineUsers={};
 
+const getReceiverSocketId=(userId)=>{
+    return onlineUsers[userId];
+}
 
 //comments for my future reference
 //the socket.io server after forming the connection internally emit a connection event which it listens
@@ -44,4 +47,4 @@ io.on("connection",(socket)=>{
     });
 });
 
-export {io, server, app};
+export {io, server, app, getReceiverSocketId};

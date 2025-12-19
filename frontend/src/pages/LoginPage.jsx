@@ -7,7 +7,8 @@ import {Link} from "react-router";
 
 export default function LoginPage() {
   const [formData, setFormData]=useState({email:"",password:""});
-  const {login,isLoggingIn} =useAuthStore();
+  const login=useAuthStore((state)=>state.login);
+  const isLoggingIn=useAuthStore((state)=>state.isLoggingIn);
 
   const handleSubmit=(e)=>{
     e.preventDefault();

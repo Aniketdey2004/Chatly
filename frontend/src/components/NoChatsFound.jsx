@@ -4,8 +4,7 @@ import { MessageCircleIcon } from 'lucide-react';
 
 
 export default function NoChatsFound() {
-  const {setActiveTab}=useChatStore();
-
+  const setActiveTab=useChatStore((state)=>state.setActiveTab);
   return (
     <div className='h-full flex flex-col pt-6 items-center gap-4'>
         <div className='w-16 h-16 bg-cyan-500/10 rounded-full flex items-center justify-center'>

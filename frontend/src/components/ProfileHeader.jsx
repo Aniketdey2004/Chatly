@@ -6,8 +6,12 @@ import {LogOut, VolumeOff, Volume2} from "lucide-react";
 const mouseClickSound = new Audio("/sounds/mouse-click.mp3");
 
 export default function ProfileHeader() {
-  const {logout, authUser, updateProfile}= useAuthStore();
-  const {isSoundEnabled, toggleSound}=useChatStore();
+  const logout=useAuthStore((state)=>state.logout);
+  const authUser=useAuthStore((state)=>state.authUser);
+  const updateProfile=useAuthStore((state)=>state.updateProfile);
+  const isSoundEnabled=useChatStore((state)=>state.isSoundEnabled);
+  const toggleSound=useChatStore((state)=>state.toggleSound);
+  
   const [selectedImg,setSelectedImg]=useState(null);
 
   const fileInputRef=useRef(null);
