@@ -15,7 +15,7 @@ export const useChatStore= create((set,get)=>({
     isUsersLoading: false,
     isMessagesLoading:false,
     isSoundEnabled: JSON.parse(localStorage.getItem("isSoundEnabled"))===true,
-    Sidebar:false,
+    sidebar:true,
     toggleSidebar:()=>{
         set({sidebar:!get().sidebar});
     },
