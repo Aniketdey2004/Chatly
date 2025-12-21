@@ -40,7 +40,7 @@ export default function ChatContainer() {
             <div className='max-w-3xl mx-auto space-y-6'>
               {
                 messages.map((message)=>(
-                  <div key={message._id} className={`chat ${message.senderId===authUser._id?"chat-end":"chart-start"}`}>
+                  <div key={message._id} className={`chat ${message.senderId===authUser._id?"chat-end":"chat-start"}`}>
                       <div className={`chat-bubble ${message.senderId===authUser._id?"bg-cyan-600 text-white":"bg-slate-800 text-slate-200"}`}>
                           {message.image && <img src={message.image} alt='Shared' className='rounded-lg h-48 object-cover'/>}
                           {message.text && <p className='mt-2'>{message.text}</p>}

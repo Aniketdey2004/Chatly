@@ -60,7 +60,7 @@ export const useAuthStore = create((set, get) => ({
       const {storeCleanUp}=useChatStore.getState();
       storeCleanUp();
       get().disconnectSocket();
-      set({ authUser: null, socket:null });
+      set({ authUser: null});
       toast.success("Logged out successfully");
     } catch (error) {
       console.log("Error in logging out", error);

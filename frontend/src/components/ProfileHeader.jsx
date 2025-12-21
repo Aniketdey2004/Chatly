@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useAuthStore } from '../store/useAuthStore'
 import { useChatStore } from '../store/useChatStore';
-import {LogOut, VolumeOff, Volume2} from "lucide-react";
+import {LogOut, VolumeOff, Volume2, XIcon} from "lucide-react";
 
 const mouseClickSound = new Audio("/sounds/mouse-click.mp3");
 
@@ -11,6 +11,7 @@ export default function ProfileHeader() {
   const updateProfile=useAuthStore((state)=>state.updateProfile);
   const isSoundEnabled=useChatStore((state)=>state.isSoundEnabled);
   const toggleSound=useChatStore((state)=>state.toggleSound);
+  const toggleSidebar=useChatStore((state)=>state.toggleSidebar);
   
   const [selectedImg,setSelectedImg]=useState(null);
 
@@ -64,6 +65,9 @@ export default function ProfileHeader() {
               {
                 isSoundEnabled? <Volume2 className='size-5'/>:<VolumeOff className='size-5'/>
               }
+          </button>
+          <button onClick={toggleSidebar}>
+                <XIcon className='w-5 h-5 text-slate-400 hover:text-slate-200 transition-colors cursor-pointer'/>
           </button>
         </div>
     </div>

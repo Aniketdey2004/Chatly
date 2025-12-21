@@ -59,17 +59,17 @@ export default function MessageInput() {
             <input type='text' placeholder='Type your message...' onChange={(e)=>{
               setText(e.target.value);
               isSoundEnabled && playRandomKeyboardSound(); 
-            }} value={text} className='flex-1 bg-slate-800/50 rounded-lg px-4 py-2 border border-slate-700/50 focus:border-cyan-500
+            }} value={text} className='flex-1 bg-slate-800/50 rounded-lg px-2 md:px-4 py-2 border border-slate-700/50 focus:border-cyan-500
     focus:ring-2 focus:ring-cyan-500
     focus:outline-none'/>
             <input type='file' ref={fileInputRef} accept='image/*' onChange={handleImageChange} className='hidden'/>
             <button onClick={()=>{
                   fileInputRef.current.click();
                 }
-              } type='button' className={`bg-slate-800/50 ${image?"text-cyan-500":"text-slate-400"} hover:text-slate-200 rounded-lg px-4 transition-colors`}>
+              } type='button' className={`bg-slate-800/50 ${image?"text-cyan-500":"text-slate-400"} hover:text-slate-200 rounded-lg px-2 md:px-4 transition-colors`}>
                 <ImageIcon className='w-5 h-5'/>
             </button>
-            <button type='submit' disabled={!text.trim() && !image} className='bg-gradient-to-r from-cyan-500 to-cyan-600 text-white rounded-lg px-4 py-2 font-medium hover:from-cyan-600 hover:to-cyan-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed'>
+            <button type='submit' disabled={!text.trim() && !image} className='bg-gradient-to-r from-cyan-500 to-cyan-600 text-white rounded-lg px-2 md:px-4 py-2 font-medium hover:from-cyan-600 hover:to-cyan-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed'>
                 <SendIcon className='w-5 h-5'/>
             </button>
         </form>

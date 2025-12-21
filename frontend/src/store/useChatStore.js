@@ -3,6 +3,7 @@ import { axiosInstance } from "../lib/axios";
 import toast from "react-hot-toast";
 import { useAuthStore } from "./useAuthStore";
 
+
 const notificationSound=new Audio('./sounds/notification.mp3');
 
 export const useChatStore= create((set,get)=>({
@@ -14,7 +15,10 @@ export const useChatStore= create((set,get)=>({
     isUsersLoading: false,
     isMessagesLoading:false,
     isSoundEnabled: JSON.parse(localStorage.getItem("isSoundEnabled"))===true,
-
+    Sidebar:false,
+    toggleSidebar:()=>{
+        set({sidebar:!get().sidebar});
+    },
     toggleSound:()=>{
         localStorage.setItem("isSoundEnabled",!get().isSoundEnabled);
         set({isSoundEnabled:!get().isSoundEnabled});

@@ -17,7 +17,7 @@ export default function LoginPage() {
 
   return (
    
-       <div className="relative w-full max-w-6xl md:h-[800px] h-[650px] mx-4">
+       <div className="relative w-full max-w-6xl md:h-[750px] h-[630px] mx-4">
           <BorderAnimatedContainer>
             {/* <div className='w-full flex md:flex-row'> */}
                 {/*FORM COLUMN left side*/}
