@@ -52,10 +52,7 @@ export default function ProfileHeader() {
         </div>
         {/*Buttons*/}
         <div className='flex items-center gap-4'>
-          {/*Logout btns*/ }
-          <button className='text-slate-400 hover:text-slate-200 transition-colors' onClick={logout}>
-            <LogOut className='size-5'/>
-          </button>
+         
           {/*sound buttons*/ }
           <button className='text-slate-400 hover:text-slate-200 transition-colors' onClick={()=>{
             mouseClickSound.currentTime=0;
@@ -65,6 +62,10 @@ export default function ProfileHeader() {
               {
                 isSoundEnabled? <Volume2 className='size-5'/>:<VolumeOff className='size-5'/>
               }
+          </button>
+           {/*Logout btns*/ }
+          <button className='text-slate-400 hover:text-slate-200 transition-colors' onClick={logout}>
+            <LogOut className='size-5'/>
           </button>
           <button onClick={toggleSidebar}>
                 <XIcon className='w-5 h-5 text-slate-400 hover:text-slate-200 transition-colors cursor-pointer'/>

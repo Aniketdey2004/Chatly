@@ -14,7 +14,7 @@ export default function ChatPage() {
   const sidebar=useChatStore((state)=>state.sidebar);
 
   return (
-    <div className='relative w-full max-w-6xl md:h-[750px] h-[650px]'>
+    <div className='relative w-full max-w-6xl h-[95vh]'>
       {/* <div className='px-4'> */}
       <BorderAnimatedContainer>
         {/*Left Section*/}
