@@ -41,6 +41,9 @@ export const useChatStore= create((set,get)=>({
             set({isUsersLoading:false});
         }
     },
+    filterContacts:(search)=>{
+        set({allContacts:get().allContacts.filter((contact)=>(contact.fullName.includes(search)))});
+    },
     getMyChatPartners:async()=>{
         set({isUsersLoading:true});
         try{
@@ -54,6 +57,9 @@ export const useChatStore= create((set,get)=>({
         finally{
             set({isUsersLoading:false});
         }
+    },
+    filterChatPartners:(search)=>{
+        set({chats:get().chats.filter((chat)=>(chat.fullName.includes(search)))});
     },
     getMessagesByUserId:async(userId)=>{
         set({isMessagesLoading:true});
