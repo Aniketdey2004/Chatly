@@ -16,7 +16,7 @@ export default function NoChatHistoryPlaceholder({name}) {
         <h3 className='text-xl font-medium  text-slate-200 text-center'>Start your conversation with {name}</h3>
         <p className='text-slate-200 text-sm text-center'>This is the beginning of your conversation. Send a message to start chatting!</p>
         <div className='flex justify-center gap-4 md:gap-8'>
-            <button className='text-sm font-medium bg-cyan-500/20  text-cyan-400 px-4 py-1 rounded-2xl hover:bg-cyan-500/20 transition-colors' onClick={()=>sendInitialMessage("Say Hello")}>👋 Say Hello</button>
+            <button className='text-sm font-medium bg-cyan-500/20  text-cyan-400 px-4 py-1 rounded-2xl hover:bg-cyan-500/20 transition-colors' onClick={()=>sendInitialMessage("Hello")}>👋 Say Hello</button>
             <button className='text-sm font-medium bg-cyan-500/20  text-cyan-400 px-4 py-1 rounded-2xl hover:bg-cyan-500/20 transition-colors' onClick={()=>sendInitialMessage("How are you?")}>🤝 How are you?</button>
             <button className='text-sm font-medium bg-cyan-500/20  text-cyan-400 px-4 py-1 rounded-2xl hover:bg-cyan-500/20 transition-colors' onClick={()=>sendInitialMessage("Meet up soon?")}>📅 Meet up soon?</button>
         </div>
