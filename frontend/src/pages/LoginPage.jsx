@@ -44,7 +44,7 @@ export default function LoginPage() {
                                 <label htmlFor='password' className='auth-input-label'>Password</label>
                                 <div className='relative'>
                                     <LockIcon className="auth-input-icon" />
-                                    <input type='text' value={formData.password} onChange={(e)=>setFormData({...formData,password:e.target.value})}  className="input"
+                                    <input type='password' value={formData.password} onChange={(e)=>setFormData({...formData,password:e.target.value})}  className="input"
                                       placeholder="Enter your password"/>
                                 </div>
                               </div>
